@@ -13,7 +13,7 @@ public class EmployeeController {
 
     @RequestMapping("/employees")
     public List<Employee> findAllEmployees() {
-        public List<Employee> employeeList = Arrays.asList(
+        List<Employee> employeeList = Arrays.asList(
                 new Employee(1, "Derek", "Mystic"),
                 new Employee(2, "Jess", "Mystic"),
                 new Employee(3, "Smitty", "Memphis")

@@ -18,7 +18,6 @@ public class EmployeeController {
 
     @RequestMapping("/employees")
     public List<Employee> findAllEmployees() {
-
         return employeeService.getAllEmployees();
     }
 }

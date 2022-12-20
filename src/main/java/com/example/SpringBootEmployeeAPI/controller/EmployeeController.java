@@ -14,27 +14,27 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @RequestMapping("/employees")
+    @GetMapping("/employees")
     public List<Employee> findAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
-    @RequestMapping("/employees/{id}") // passing {id} into findAnEmployee() via @PathVariable!
+    @GetMapping("/employees/{id}") // passing {id} into findAnEmployee() via @PathVariable!
     public Employee findAnEmployee(@PathVariable int id) {
         return employeeService.getAnEmployee(id);
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    @PostMapping("/employees")
     public void createEmployee(@RequestBody Employee employee) {
         employeeService.createEmployee(employee);
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)
+    @PutMapping("/employees/{id}")
     public void updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
         employeeService.updateEmployee(employee);
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/employees/{id}")
     public List<Employee> deleteEmployee(@PathVariable int id) {
         employeeService.deleteEmployee(id);
         return employeeService.getAllEmployees(); // returning updated list to confirm deletion

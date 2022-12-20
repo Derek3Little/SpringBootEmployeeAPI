@@ -39,4 +39,15 @@ public class EmployeeService {
         }
         this.employeeList = tempEmployeeList; // replace perm list with temp list
     }
+
+    public void deleteEmployee(int id) { // id of employee to be deleted
+        List<Employee> tempEmployeeList = new ArrayList<>();
+        for (Employee emp : employeeList) {
+            if (emp.getEmployeeId() == id) {
+                continue; // as updateEmployee, except skipping the matched id in the list reconstruction
+            }
+            tempEmployeeList.add(emp);
+        }
+        this.employeeList = tempEmployeeList;
+    }
 }

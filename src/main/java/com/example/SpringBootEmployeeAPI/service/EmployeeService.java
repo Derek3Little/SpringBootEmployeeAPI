@@ -13,9 +13,7 @@ import java.util.List;
 public class EmployeeService {
 
     List<Employee> employeeList = new ArrayList<>(Arrays.asList(
-            new Employee(1, "Derek", "Mystic"),
-            new Employee(2, "Jess", "Mystic"),
-            new Employee(3, "Smitty", "Memphis")
+
     ));
 
     @Autowired // spring automatically initializing

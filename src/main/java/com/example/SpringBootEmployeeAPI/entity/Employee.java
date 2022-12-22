@@ -20,7 +20,7 @@ public class Employee {
         this.employeeCity = employeeCity;
     }
 
-    public Employee() {
+    public Employee() { // empty default constructor
 
     }
 

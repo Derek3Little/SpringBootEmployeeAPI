@@ -1,6 +1,8 @@
 package com.example.SpringBootEmployeeAPI.service;
 
 import com.example.SpringBootEmployeeAPI.entity.Employee;
+import com.example.SpringBootEmployeeAPI.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ public class EmployeeService {
             new Employee(3, "Smitty", "Memphis")
     ));
 
+    @Autowired // spring automatically initializing
+    EmployeeRepository employeeRepository;
+
     public List<Employee> getAllEmployees() {
         return employeeList;
     }
@@ -25,7 +30,7 @@ public class EmployeeService {
     }
 
     public void createEmployee(Employee employee) {
-        employeeList.add(employee);
+        employeeRepository.save(employee); // JPA gives us the save method with the extension in EmployeeRepository!
     }
 
     public void updateEmployee(Employee employee) {

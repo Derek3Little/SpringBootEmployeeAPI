@@ -1,6 +1,15 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity // JPA
 public class Employee {
+
+    @Id // designated employeeId as the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // automatically generating unique employeeId, no need to pass!
     int employeeId;
     String employeeName;
     String employeeCity;
@@ -9,6 +18,10 @@ public class Employee {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeCity = employeeCity;
+    }
+
+    public Employee() {
+
     }
 
     public int getEmployeeId() {

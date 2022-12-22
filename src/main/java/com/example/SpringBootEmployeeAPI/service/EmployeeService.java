@@ -32,6 +32,8 @@ public class EmployeeService {
     }
 
     public void updateEmployee(Employee employee) {
+        /*
+
         List<Employee> tempEmployeeList = new ArrayList<>(); // temp list to replace perm list
         for (Employee emp : employeeList) { // loop through perm list to check for id match
             if (emp.getEmployeeId() == employee.getEmployeeId()) { // if match found..
@@ -41,9 +43,15 @@ public class EmployeeService {
             tempEmployeeList.add(emp); // add every employee to the temp list, including updated employee
         }
         this.employeeList = tempEmployeeList; // replace perm list with temp list
+
+        */
+
+        employeeRepository.save(employee);
     }
 
     public void deleteEmployee(int id) { // id of employee to be deleted
+        /*
+
         List<Employee> tempEmployeeList = new ArrayList<>();
         for (Employee emp : employeeList) {
             if (emp.getEmployeeId() == id) {
@@ -52,5 +60,9 @@ public class EmployeeService {
             tempEmployeeList.add(emp);
         }
         this.employeeList = tempEmployeeList;
+
+        */
+
+        employeeRepository.delete(employeeRepository.getReferenceById(id));
     }
 }

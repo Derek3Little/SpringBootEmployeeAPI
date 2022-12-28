@@ -16,21 +16,25 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public List<Employee> findAllEmployees() {
+
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/employees/{id}") // passing {id} into findAnEmployee() via @PathVariable!
     public Employee findAnEmployee(@PathVariable int id) {
+
         return employeeService.getAnEmployee(id);
     }
 
     @PostMapping("/employees")
     public void createEmployee(@RequestBody Employee employee) {
+
         employeeService.createEmployee(employee);
     }
 
     @PutMapping("/employees/{id}")
     public void updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
+
         employeeService.updateEmployee(employee);
     }
 

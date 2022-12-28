@@ -14,6 +14,9 @@ public class Spouse {
     private String mobileNumber;
     private int age;
 
+    @OneToOne(mappedBy = "spouse") // bidirectional onetoone mapping!
+    private Employee employee;
+
     public Spouse(int id, String name, String mobileNumber, int age) {
         this.name = name;
         this.mobileNumber = mobileNumber;
@@ -21,7 +24,7 @@ public class Spouse {
     }
 
     public Spouse() {
-        
+
     }
 
     public int getId() {

@@ -1,9 +1,6 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity // JPA
 public class Employee {
@@ -11,8 +8,12 @@ public class Employee {
     @Id // designated employeeId as the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // automatically generating unique employeeId, no need to pass!
     int employeeId;
+
     String employeeName;
     String employeeCity;
+
+    @OneToOne
+    private Spouse spouse;
 
     public Employee(int employeeId, String employeeName, String employeeCity) {
         this.employeeId = employeeId;
@@ -46,5 +47,13 @@ public class Employee {
 
     public void setEmployeeCity(String employeeCity) {
         this.employeeCity = employeeCity;
+    }
+
+    public Spouse getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Spouse spouse) {
+        this.spouse = spouse;
     }
 }

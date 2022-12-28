@@ -1,6 +1,7 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity // JPA
 public class Employee {
@@ -15,6 +16,9 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "fk_spouse") // fk = foreign key
     private Spouse spouse;
+
+    @OneToMany
+    private List<Address> addresses;
 
     public Employee(int employeeId, String employeeName, String employeeCity) {
         this.employeeId = employeeId;
@@ -56,5 +60,13 @@ public class Employee {
 
     public void setSpouse(Spouse spouse) {
         this.spouse = spouse;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

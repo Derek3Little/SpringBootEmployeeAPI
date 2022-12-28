@@ -3,7 +3,7 @@ package com.example.SpringBootEmployeeAPI.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Spouse")
+@Table(name = "spouse")
 public class Spouse {
 
     @Id

@@ -13,6 +13,7 @@ public class Employee {
     String employeeCity;
 
     @OneToOne
+    @JoinColumn(name = "fk_spouse") // fk = foreign key
     private Spouse spouse;
 
     public Employee(int employeeId, String employeeName, String employeeCity) {

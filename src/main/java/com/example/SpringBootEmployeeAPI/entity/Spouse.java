@@ -14,7 +14,7 @@ public class Spouse {
     private String mobileNumber;
     private int age;
 
-    @OneToOne(mappedBy = "spouse") // bidirectional onetoone mapping!
+    @OneToOne(mappedBy = "spouse") // bidirectional 1to1 mapping! 'spouse' is the corresponding field in Employee
     private Employee employee;
 
     public Spouse(int id, String name, String mobileNumber, int age) {

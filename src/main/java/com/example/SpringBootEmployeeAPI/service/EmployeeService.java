@@ -20,11 +20,18 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
     public List<Employee> getAllEmployees() {
-        return employeeList;
+
+        // return employeeList;
+
+        return employeeRepository.findAll(); // JPA provides a findAll() method!
     }
 
     public Employee getAnEmployee(int id) {
-        return employeeList.stream().filter(e -> (e.getEmployeeId() == id)).findFirst().get();
+
+        // return employeeList.stream().filter(e -> (e.getEmployeeId() == id)).findFirst().get();
+
+        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found!"));
+            // findById() provided by JPA, must throw an error if employee not found
     }
 
     public void createEmployee(Employee employee) {

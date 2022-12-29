@@ -1,5 +1,6 @@
 package com.example.SpringBootEmployeeAPI.service;
 
+import com.example.SpringBootEmployeeAPI.entity.Address;
 import com.example.SpringBootEmployeeAPI.entity.Employee;
 import com.example.SpringBootEmployeeAPI.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,20 @@ public class EmployeeService {
     }
 
     public void createEmployee(Employee employee) {
+        ArrayList<Address> addressArrayList = new ArrayList<>(); // empty arraylist for creation of employee addresses
+
+        for (Address address : employee.getAddresses()) {
+            addressArrayList.add((new Address(
+                    address.getStreetLine1(),
+                    address.getStreetLine2(),
+                    address.getZipCode(),
+                    address.getCity(),
+                    address.getCountry(),
+                    employee)));
+        }
+
+        employee.setAddresses(addressArrayList);
+
         employeeRepository.save(employee); // JPA gives us the save method with the extension in EmployeeRepository!
     }
 

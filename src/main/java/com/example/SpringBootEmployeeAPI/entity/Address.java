@@ -19,12 +19,13 @@ public class Address {
     @ManyToOne
     private Employee employee; // many to one mapping reflects multiple employees sharing a single address
 
-    public Address(String streetLine1, String streetLine2, String zipCode, String city, String country) {
+    public Address(String streetLine1, String streetLine2, String zipCode, String city, String country, Employee employee) {
         this.streetLine1 = streetLine1;
         this.streetLine2 = streetLine2;
         this.zipCode = zipCode;
         this.city = city;
         this.country = country;
+        this.employee = employee;
     }
 
     public Address() {

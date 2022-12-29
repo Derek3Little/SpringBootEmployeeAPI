@@ -1,6 +1,7 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity // defining Project as an entity w/JPA
 @Table(name = "project") // assigning table name in database w/JPA
@@ -12,6 +13,9 @@ public class Project {
 
     private String name; // name of project
     private String clientName; // name of project's client
+
+    @ManyToMany(mappedBy = "projects") // mappedBy referring to the 'projects' field in Employee class
+    private List<Employee> employees; // list of employees working on this project
 
     public Project(String name, String clientName) {
         // this.id = id? not necessary due to JPA action in 'id' field above
@@ -45,5 +49,13 @@ public class Project {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

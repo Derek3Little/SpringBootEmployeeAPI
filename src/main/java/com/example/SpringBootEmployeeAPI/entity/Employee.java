@@ -21,6 +21,9 @@ public class Employee {
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
     @ManyToMany
+    @JoinTable(name = "employee_project", // naming the table that stores the m2m relationship
+        joinColumns = @JoinColumn(name = "fk_employee"), // naming the column that stores the employee id
+        inverseJoinColumns = @JoinColumn(name = "fk_project")) // naming the column that stores the project id
     private List<Project> projects; // many to many mapping reflects multiple employees working with multiple projects
 
     public Employee(int employeeId, String employeeName, String employeeCity) {
@@ -71,5 +74,15 @@ public class Employee {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public void removeProject(Project project) { // method for removing a project from projects list
+        this.projects.remove(project); // removal from project list here in Employee class
+        project.getEmployees().remove(project); // removal of employee from employee list in Project class
+    } // the bidirectional m2m mapping requires removal on both ends of the bidirectional relationship!
+
+    public void addProject(Project project) { // as in removeProject, both ends of the removal must be accounted for!
+        this.projects.add(project);
+        project.getEmployees().add(this); // 'this' refers to 'project'
     }
 }

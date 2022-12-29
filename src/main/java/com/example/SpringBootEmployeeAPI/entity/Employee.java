@@ -20,6 +20,9 @@ public class Employee {
     @OneToMany
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
+    @ManyToMany
+    private List<Project> projects; // many to many mapping reflects multiple employees working with multiple projects
+
     public Employee(int employeeId, String employeeName, String employeeCity) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;

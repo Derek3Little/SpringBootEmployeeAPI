@@ -13,14 +13,14 @@ public class Employee {
     String employeeName;
     String employeeCity;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL) // cascading ALL actions on employee to spouse, ie delete employee also deletes spouse
     @JoinColumn(name = "fk_spouse") // fk = foreign key
     private Spouse spouse;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employee_project", // naming the table that stores the m2m relationship
         joinColumns = @JoinColumn(name = "fk_employee"), // naming the column that stores the employee id
         inverseJoinColumns = @JoinColumn(name = "fk_project")) // naming the column that stores the project id

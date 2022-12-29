@@ -1,5 +1,7 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity // defining Address as an entity
@@ -16,6 +18,7 @@ public class Address {
     private String city;
     private String country;
 
+    @JsonIgnore
     @ManyToOne
     private Employee employee; // many to one mapping reflects multiple employees sharing a single address
 

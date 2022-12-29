@@ -1,5 +1,7 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Project {
     private String name; // name of project
     private String clientName; // name of project's client
 
+    @JsonIgnore // preventing endless looping due to m2m mapping
     @ManyToMany(mappedBy = "projects") // mappedBy referring to the 'projects' field in Employee class
     private List<Employee> employees; // list of employees working on this project
 

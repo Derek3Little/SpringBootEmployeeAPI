@@ -76,6 +76,14 @@ public class Employee {
         this.addresses = addresses;
     }
 
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
     public void removeProject(Project project) { // method for removing a project from projects list
         this.projects.remove(project); // removal from project list here in Employee class
         project.getEmployees().remove(project); // removal of employee from employee list in Project class

@@ -18,7 +18,7 @@ public class Employee {
     private Spouse spouse;
 
     @OneToMany
-    private List<Address> addresses;
+    private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
     public Employee(int employeeId, String employeeName, String employeeCity) {
         this.employeeId = employeeId;

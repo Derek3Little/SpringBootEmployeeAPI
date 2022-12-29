@@ -16,6 +16,9 @@ public class Address {
     private String city;
     private String country;
 
+    @ManyToOne
+    private Employee employee; // many to one mapping reflects multiple employees sharing a single address
+
     public Address(String streetLine1, String streetLine2, String zipCode, String city, String country) {
         this.streetLine1 = streetLine1;
         this.streetLine2 = streetLine2;
@@ -74,5 +77,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

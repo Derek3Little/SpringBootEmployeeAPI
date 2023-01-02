@@ -1,6 +1,7 @@
 package com.example.SpringBootEmployeeAPI.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity // JPA
@@ -26,8 +27,7 @@ public class Employee {
         inverseJoinColumns = @JoinColumn(name = "fk_project")) // naming the column that stores the project id
     private List<Project> projects; // many to many mapping reflects multiple employees working with multiple projects
 
-    public Employee(int employeeId, String employeeName, String employeeCity) {
-        this.employeeId = employeeId;
+    public Employee(String employeeName, String employeeCity) {
         this.employeeName = employeeName;
         this.employeeCity = employeeCity;
     }
@@ -92,5 +92,16 @@ public class Employee {
     public void addProject(Project project) { // as in removeProject, both ends of the removal must be accounted for!
         this.projects.add(project);
         project.getEmployees().add(this); // 'this' refers to 'project'
+    }
+
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
+        address.setEmployee(null); // must set employee to null due to bidirectional mapping!
+    }
+
+    public void addAddress(Address address) {
+        this.addresses = new ArrayList<>();
+        this.addresses.add(address);
+        address.setEmployee(this); // we must also set the employee of the address due to bidirectional mapping!
     }
 }

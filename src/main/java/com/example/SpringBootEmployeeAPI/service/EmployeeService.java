@@ -44,6 +44,7 @@ public class EmployeeService {
                     address.getStreetLine2(),
                     address.getZipCode(),
                     address.getCity(),
+                    address.getState(),
                     address.getCountry(),
                     employee)));
         }

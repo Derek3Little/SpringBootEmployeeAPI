@@ -16,17 +16,20 @@ public class Address {
     private String streetLine2;
     private String zipCode;
     private String city;
+    private String state;
     private String country;
 
     @JsonIgnore
     @ManyToOne
     private Employee employee; // many to one mapping reflects multiple employees sharing a single address
 
-    public Address(String streetLine1, String streetLine2, String zipCode, String city, String country, Employee employee) {
+    public Address(String streetLine1, String streetLine2, String zipCode, String city, String state, String country,
+                   Employee employee) {
         this.streetLine1 = streetLine1;
         this.streetLine2 = streetLine2;
         this.zipCode = zipCode;
         this.city = city;
+        this.state = state;
         this.country = country;
         this.employee = employee;
     }
@@ -73,6 +76,14 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getCountry() {

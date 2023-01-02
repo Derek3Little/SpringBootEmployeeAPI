@@ -35,6 +35,7 @@ public class SpringBootEmployeeApiApplication {
 
 			System.out.println("Getting an employee");
 			Employee employee1 = employeeService.getAnEmployee(1);
+			  // due to EAGER fetch type, fetching employee will fetch children as well (spouse, addresses, etc)
 		};
 	}
 

@@ -20,7 +20,7 @@ public class Employee {
     @JoinColumn(name = "fk_spouse") // fk = foreign key
     private Spouse spouse;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // eager fetch will collect all dependents with a fetch
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
     @ManyToMany(cascade = CascadeType.ALL)

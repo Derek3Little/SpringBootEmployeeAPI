@@ -23,7 +23,7 @@ public class Employee {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "employee_project", // naming the table that stores the m2m relationship
         joinColumns = @JoinColumn(name = "fk_employee"), // naming the column that stores the employee id
         inverseJoinColumns = @JoinColumn(name = "fk_project")) // naming the column that stores the project id

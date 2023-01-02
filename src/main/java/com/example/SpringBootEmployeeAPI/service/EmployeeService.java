@@ -2,15 +2,19 @@ package com.example.SpringBootEmployeeAPI.service;
 
 import com.example.SpringBootEmployeeAPI.entity.Address;
 import com.example.SpringBootEmployeeAPI.entity.Employee;
+import com.example.SpringBootEmployeeAPI.entity.Project;
 import com.example.SpringBootEmployeeAPI.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Service
+@Transactional
 public class EmployeeService {
 
     List<Employee> employeeList = new ArrayList<>(Arrays.asList(
@@ -29,9 +33,15 @@ public class EmployeeService {
 
     public Employee getAnEmployee(int id) {
 
-        // return employeeList.stream().filter(e -> (e.getEmployeeId() == id)).findFirst().get();
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found!"));
+        Set<Project> projects = employee.getProjects();
 
-        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found!"));
+        System.out.println("Fetching projects in service class");
+        for (Project p : projects) {
+            System.out.println(p.getClientName());
+        }
+
+        return employee;
             // findById() provided by JPA, must throw an error if employee not found
     }
 

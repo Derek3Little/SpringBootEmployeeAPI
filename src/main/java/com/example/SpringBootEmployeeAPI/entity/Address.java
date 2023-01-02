@@ -23,6 +23,7 @@ public class Address {
     @ManyToOne
     private Employee employee; // many to one mapping reflects multiple employees sharing a single address
 
+    // full constructor with employee
     public Address(String streetLine1, String streetLine2, String zipCode, String city, String state, String country,
                    Employee employee) {
         this.streetLine1 = streetLine1;
@@ -34,8 +35,19 @@ public class Address {
         this.employee = employee;
     }
 
+    // full constructor minus employee
+    public Address(String streetLine1, String streetLine2, String zipCode, String city, String state, String country) {
+        this.streetLine1 = streetLine1;
+        this.streetLine2 = streetLine2;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
+
+    // empty default constructor
     public Address() {
-        // empty default constructor
+
     }
 
     public int getId() {

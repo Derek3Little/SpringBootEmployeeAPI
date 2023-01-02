@@ -17,12 +17,13 @@ public class Spouse {
     @OneToOne(mappedBy = "spouse") // bidirectional 1to1 mapping! 'spouse' is the corresponding field in Employee
     private Employee employee;
 
-    public Spouse(int id, String name, String mobileNumber, int age) {
+    public Spouse(String name, String mobileNumber, int age) {
         this.name = name;
         this.mobileNumber = mobileNumber;
         this.age = age;
     }
 
+    // empty default constructor
     public Spouse() {
 
     }

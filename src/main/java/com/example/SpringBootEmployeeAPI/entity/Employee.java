@@ -2,7 +2,9 @@ package com.example.SpringBootEmployeeAPI.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity // JPA
 public class Employee {
@@ -25,8 +27,16 @@ public class Employee {
     @JoinTable(name = "employee_project", // naming the table that stores the m2m relationship
         joinColumns = @JoinColumn(name = "fk_employee"), // naming the column that stores the employee id
         inverseJoinColumns = @JoinColumn(name = "fk_project")) // naming the column that stores the project id
-    private List<Project> projects; // many to many mapping reflects multiple employees working with multiple projects
+    private Set<Project> projects = new HashSet<>(); // many to many mapping reflects multiple employees working with multiple projects
 
+    // full constructor with specified employeeId
+    public Employee(int employeeId, String employeeName, String employeeCity) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeCity = employeeCity;
+    }
+
+    // reduced constructor, minus auto-generated employeeId
     public Employee(String employeeName, String employeeCity) {
         this.employeeName = employeeName;
         this.employeeCity = employeeCity;
@@ -76,11 +86,11 @@ public class Employee {
         this.addresses = addresses;
     }
 
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 

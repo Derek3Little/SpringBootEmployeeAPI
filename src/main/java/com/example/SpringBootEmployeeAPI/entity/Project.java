@@ -3,6 +3,7 @@ package com.example.SpringBootEmployeeAPI.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity // defining Project as an entity w/JPA
@@ -18,7 +19,7 @@ public class Project {
 
     @JsonIgnore // preventing endless looping due to m2m mapping
     @ManyToMany(mappedBy = "projects") // mappedBy referring to the 'projects' field in Employee class
-    private List<Employee> employees; // list of employees working on this project
+    private List<Employee> employees = new ArrayList<>(); // list of employees working on this project
 
     public Project(String name, String clientName) {
         // this.id = id? not necessary due to JPA action in 'id' field above

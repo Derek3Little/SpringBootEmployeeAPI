@@ -16,11 +16,11 @@ public class Employee {
     String employeeName;
     String employeeCity;
 
-    @OneToOne(cascade = CascadeType.ALL) // cascading ALL actions on employee to spouse, ie delete employee also deletes spouse
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // cascading ALL actions on employee to spouse, ie delete employee also deletes spouse
     @JoinColumn(name = "fk_spouse") // fk = foreign key
     private Spouse spouse;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // eager fetch will collect all dependents with a fetch
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses; // one to many mapping reflects a single employee having multiple addresses
 
     @ManyToMany(cascade = CascadeType.ALL)
